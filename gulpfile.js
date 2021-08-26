@@ -7,7 +7,7 @@ const sass = require('gulp-sass')(require('sass'));
 // create a function responsible for compiling sass into css 
 function buildStyles() {
     // compile the src file into css file and pipe it into some destination folder 
-    return src('index.scss')
+    return src('*.scss') // repalce index.scss with *.scss to compile multiple scss files except the ones that start with an _ underscore
         .pipe(sass())
         .pipe(dest('css'))
 }
@@ -15,7 +15,7 @@ function buildStyles() {
 // create a function to watch the chages
 function watchTask() {
     // pass an array of files to watch and a function to run on file change 
-    watch(['index.scss'], buildStyles)
+    watch(['*.scss'], buildStyles) // repalce index.scss with *.scss to compile multiple scss files except the ones that start with an _ underscore
 }
 
 exports.default = series(buildStyles, watchTask);
